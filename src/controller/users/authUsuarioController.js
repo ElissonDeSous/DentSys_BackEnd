@@ -20,14 +20,14 @@ export default class AuthUsuarios {
     if (!usuario) {
       return response
         .status(400)
-        .json({ mensagem: "usuario não existe" });
+        .json({ mensagem: "ocorreu um erro email ou senha estão incorretos" });
     }
     const verificarSenha = await compare(password, usuario.password);
 
     if (!verificarSenha) {
       return response
         .status(400)
-        .json({ mensagem: "Usuario não existe" });
+        .json({ mensagem: "ocorreu um erro email ou senha estão incorretos" });
     }
 
     const token = jwt.sign(

@@ -24,11 +24,11 @@ export default class Usuarios {
     const SenhaCriptografada = await bcrypt.hash(senha, 10);
 
     if (emailExiste) {
-      return response.status(400).json({ mensagem: "Email ja existe" });
+      return response.status(400).json({ mensagem: " verifique se todos os campos estão corretos" });
     }
 
      if(nome === "" || email === "" ||  senha === ""){
-       return response.status(400).json({msg:"Digite todos os campos"})
+       return response.status(400).json({mensagem:" verifique se todos os campos estão corretos"})
     }
 
     await prisma.users.create({
