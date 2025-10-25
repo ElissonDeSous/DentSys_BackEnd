@@ -24,7 +24,7 @@ export default class authEmployee{
         res.cookie('tokenFuncionario', tokenFuncionario, {
               httpOnly:true,
               secure:true,
-              sameSite:'lax',
+              sameSite:'none',
               path:'/detalhesFuncionario',
               maxAge: 100 * 60 * 60
         })
