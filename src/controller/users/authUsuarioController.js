@@ -39,7 +39,7 @@ export default class AuthUsuarios {
       { expiresIn: "1h" }
     );
 
- response.cookie("token", token, {
+ response.cookie("tokenCliente", token, {
   httpOnly: true,
   secure: true,
   sameSite: "lax",

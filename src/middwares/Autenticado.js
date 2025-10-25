@@ -1,8 +1,8 @@
 
 import jwt from "jsonwebtoken";
-export function Autenticado(req, res, next) {
+export function AutenticadoCliente(req, res, next) {
   console.log(req.cookies)
-  const token = req.cookies.token
+  const token = req.cookies.tokenCliente
 
   console.log(token)
   
@@ -23,7 +23,21 @@ export function Autenticado(req, res, next) {
   } catch (error) {
    return res.status(401).end()
   }
-
-
-  
 }
+
+ export function AutenticadoFuncionario(req,res,next){
+     console.log(req.cookies)
+      const  token = req.cookies.tokenFuncionario
+      if(!token){
+          res.status(400).json({error:'token não encontrado'})
+      }
+
+      const verificar = jwt.verify(token, process.env.PALAVRA_SECRETA)
+
+      req.idFuncionario = verificar.id
+      
+
+      console.log(req.idFuncionario)
+
+      next()
+  }

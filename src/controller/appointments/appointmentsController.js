@@ -1,29 +1,19 @@
 import prismaclient from "../../prisma/prismaClient.js";
 export default class appointments {
   async read(req, res) {
-     const idPaciente = req.query.idPaciente
      
-      const dados = await prismaclient.agendamentos.findMany(
-        {
-          where:{
-            pacienteId:idPaciente
-          },
+      const dados = await prismaclient.agendamentos.findMany({
           select:{
-            paciente:{
-              name:true,
-              email:true
-            },
-            funcionario:{
-              name:true,
-              email:true
-            }
-          },
-          include:{
-            paciente:{name:true,email:true},
-            funcionario:{name:true,email:true}
+             data:true,
+             paciente:{
+                select:{
+                  name:true,
+                  email:true
+                }
+             }
           }
-        }
-      )
+      })
+       
 
       res.status(200).json({dados}) 
   }
@@ -36,9 +26,6 @@ export default class appointments {
         data: date,
         paciente: {
           connect: { id:pacienteId },
-        },
-        funcionario: {
-          connect:{id:funcionarioId},
         },
       },
 

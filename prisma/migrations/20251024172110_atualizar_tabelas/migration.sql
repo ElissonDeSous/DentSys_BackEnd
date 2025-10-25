@@ -28,6 +28,7 @@ CREATE TABLE `funcionario` (
 CREATE TABLE `agendamentos` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `data` DATETIME(3) NOT NULL,
+    `servico` VARCHAR(191) NOT NULL,
     `createDate` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updateDate` DATETIME(3) NOT NULL,
     `pacienteId` INTEGER NOT NULL,

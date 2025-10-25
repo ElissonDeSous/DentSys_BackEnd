@@ -2,18 +2,13 @@ import prisma from "../../prisma/prismaClient.js";
 import bcrypt from "bcrypt";
 export default class Usuarios {
   async buscarUsuarios(request, response) {
-    const paciente = request.query.paciente;
-
-    const usuarios = await prisma.users.findMany({
-     
-    });
+    const usuarios = await prisma.users.findMany({});
 
     response.status(200).json(usuarios);
   }
 
   async criarUsuarios(request, response) {
-    const { nome, email, senha}  = request.body
-   
+    const { nome, email, senha } = request.body;
 
     const emailExiste = await prisma.users.findFirst({
       where: {
@@ -24,11 +19,15 @@ export default class Usuarios {
     const SenhaCriptografada = await bcrypt.hash(senha, 10);
 
     if (emailExiste) {
-      return response.status(400).json({ mensagem: " verifique se todos os campos estão corretos" });
+      return response
+        .status(400)
+        .json({ mensagem: " verifique se todos os campos estão corretos" });
     }
 
-     if(nome === "" || email === "" ||  senha === ""){
-       return response.status(400).json({mensagem:" verifique se todos os campos estão corretos"})
+    if (nome === "" || email === "" || senha === "") {
+      return response
+        .status(400)
+        .json({ mensagem: " verifique se todos os campos estão corretos" });
     }
 
     await prisma.users.create({
@@ -39,7 +38,6 @@ export default class Usuarios {
       },
     });
 
-
-   return response.status(201).json({ mensagem: "criado com sucesso" });
+    return response.status(201).json({ mensagem: "criado com sucesso" });
   }
 }
