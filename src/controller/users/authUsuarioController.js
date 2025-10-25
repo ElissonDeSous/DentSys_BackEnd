@@ -44,7 +44,7 @@ export default class AuthUsuarios {
   secure: true,
   sameSite: "none",
   path: "/detalhesFuncionario",
-  maxAge: 1000 * 60 * 15
+  maxAge: 1000 * 60 * 60
 
 });
 
