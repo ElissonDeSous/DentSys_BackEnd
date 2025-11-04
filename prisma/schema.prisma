@@ -38,6 +38,6 @@ model agendamentos {
   paciente   users @relation(fields: [pacienteId], references: [id])
   pacienteId Int
 
-  Funcionario   funcionario @relation(fields: [funcionarioId], references: [id])
-  funcionarioId Int
+  Funcionario   funcionario? @relation(fields: [funcionarioId], references: [id])
+  funcionarioId Int?
 }
