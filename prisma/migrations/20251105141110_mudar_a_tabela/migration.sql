@@ -41,6 +41,9 @@ CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
 -- CreateIndex
 CREATE UNIQUE INDEX "funcionario_email_key" ON "funcionario"("email");
 
+-- CreateIndex
+CREATE UNIQUE INDEX "agendamentos_data_key" ON "agendamentos"("data");
+
 -- AddForeignKey
 ALTER TABLE "agendamentos" ADD CONSTRAINT "agendamentos_pacienteId_fkey" FOREIGN KEY ("pacienteId") REFERENCES "users"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 

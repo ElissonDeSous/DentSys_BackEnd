@@ -30,7 +30,7 @@ model funcionario {
 
 model agendamentos {
   id         Int      @id @default(autoincrement())
-  data       DateTime
+  data       DateTime @unique
   servico    String
   createDate DateTime @default(now())
   updateDate DateTime @updatedAt
