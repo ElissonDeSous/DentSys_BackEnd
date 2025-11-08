@@ -2,7 +2,7 @@ import prisma from "../../prisma/prismaClient.js";
 import bcrypt from "bcrypt";
 export default class Usuarios {
   async buscarUsuarios(request, response) {
-    const usuarios = await prisma.users.findMany({});
+    const usuarios = await prisma.users.findMany();
 
     response.status(200).json(usuarios);
   }
